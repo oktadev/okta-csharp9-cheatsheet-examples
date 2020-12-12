@@ -69,32 +69,32 @@ namespace Cs9CheatSheet.NullCoalescing.Operators
 
     static class Combinatory
     {
-        public static IEnumerable<T[]> Combinations<T>(T[] array, int m)
+        public static IEnumerable<T[]> Combinations<T>(T[] array, int size)
         {
-            T[] result = new T[m];
-            foreach (int[] j in Combinations(m, array.Length))
+            T[] result = new T[size];
+            foreach (int[] j in Combinations(size, array.Length))
             {
-                for (int i = 0; i < m; i++)
+                for (int i = 0; i < size; i++)
                 {
                     result[i] = array[j[i]];
                 }
                 yield return result;
             }
         }
-        private static IEnumerable<int[]> Combinations(int m, int n)
+        private static IEnumerable<int[]> Combinations(int size, int length)
         {
-            int[] result = new int[m];
-            Stack<int> stack = new Stack<int>(m);
+            int[] result = new int[size];
+            Stack<int> stack = new Stack<int>(size);
             stack.Push(0);
             while (stack.Count > 0)
             {
                 int index = stack.Count - 1;
                 int value = stack.Pop();
-                while (value < n)
+                while (value < length)
                 {
                     result[index++] = value++;
                     stack.Push(value);
-                    if (index != m) continue;
+                    if (index != size) continue;
                     yield return (int[])result.Clone();
                     break;
                 }

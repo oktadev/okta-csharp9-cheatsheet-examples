@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace Cs9CheatSheet.StaticLocalFunctions.LocalClosureCapture
 {
@@ -29,7 +30,7 @@ namespace Cs9CheatSheet.StaticLocalFunctions.LocalClosureCapture
     public class Tests
     {
         [Fact]
-        public void Test()
+        public void Local_function()
         {
             int x = 1;
 
@@ -56,6 +57,32 @@ namespace Cs9CheatSheet.StaticLocalFunctions.LocalClosureCapture
             Assert.Equal(2, AddWithCapture(x, 1));
             //Here the side effect is to change the result of a test with the same inputs
             Assert.NotEqual(2, x + 1);
+
+            //Same with lambdas
+            Func<int, int, int> withCapture = (a, b) => { x = 9; return a + b; };
+            Func<int, int, int> withoutCapture = static (a, b) => { /*x = 9; //error */ return a + b; };
+
+        }
+
+        [Fact]
+        public void Lambda()
+        {
+            int x = 1;
+
+            Func<int, int, int> addWithCapture = (a, b) => { x = 5; return a + b; };
+            Func<int, int, int> addWithoutCapture = static (a, b) => { /*x = 9; //error */ return a + b; };
+
+            //static lambdas CANNOT change external in-scope locals (x here)
+            Assert.Equal(2, addWithoutCapture(x, 1));
+            //No side effects
+            Assert.Equal(2, x + 1);
+
+            //Non static lambdas CAN change external in-scope locals (x here)
+            Assert.Equal(2, addWithCapture(x, 1));
+            //Here the side effect is to change the result of a test with the same inputs
+            Assert.NotEqual(2, x + 1);
+
+            //Same with lambdas
 
         }
     }
