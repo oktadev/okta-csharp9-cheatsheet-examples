@@ -52,7 +52,7 @@ namespace Cs9CheatSheet.Immutability.InitOnlyProperties
             //Ok, use constructor
             var options_immutable_ok = new OktaOptionsClass_Immutable_Constructor(@"https://dev-509249.okta.com", 3);
 
-            //Ok, new init-only properties
+            //Ok, new init-only  properties
             var options_immutable_ok_init = 
                 new OktaOptionsClass_Immutable_Ok_Init { 
                     OktaDomain = @"https://dev-509249.okta.com", 
