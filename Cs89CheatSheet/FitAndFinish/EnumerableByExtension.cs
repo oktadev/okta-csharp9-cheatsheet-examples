@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Cs9CheatSheet.FitAndFinish.EnumeraleByExtension
+namespace Cs9CheatSheet.FitAndFinish.EnumerableByExtension
 {
     class EnumerableTour : IEnumerable
     {

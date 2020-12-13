@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Xunit;
+﻿using Xunit;
 
 namespace Cs9CheatSheet.Immutability.Records
 {
@@ -33,8 +32,6 @@ namespace Cs9CheatSheet.Immutability.Records
         public int Retrials { get; set; }
     }
 
-    record OktaOptionsPositionalRecord(string OktaDomain, int Retrials);
-
     public class Tests
     {
         [Fact]
@@ -54,15 +51,14 @@ namespace Cs9CheatSheet.Immutability.Records
             //value copy
             var options_struct_3 = options_struct_1;
 
-            //record semantic: as class semantic then instanciating
+            //record semantic: as class semantic when instanciating
             var options_record_1 = new OktaOptionsNominalRecord { OktaDomain = @"https://dev-509249.okta.com", Retrials = 5 };
             var options_record_2 = new OktaOptionsNominalRecord { OktaDomain = @"https://dev-509249.okta.com", Retrials = 5 };
             //Reference copy
             var options_record_3 = options_record_1;
 
-
             //class semantic: despite pointing to identical contents, only variables _1 and _3 are compared equal
-            //this is because the compiler generates reference, not content, comparicon code
+            //this is because the compiler generates reference, not content, comparison code
             Assert.NotEqual(options_class_1, options_class_2);
             Assert.NotEqual(options_class_2, options_class_3);
             Assert.Equal(options_class_1, options_class_3);
@@ -84,18 +80,16 @@ namespace Cs9CheatSheet.Immutability.Records
             Assert.Equal(options_struct_2, options_struct_3);
             Assert.NotEqual(options_struct_1, options_struct_3);
 
-            //record semantic: even though the variables represent references, the compile generates
+            //record semantic: even though the variables represent references, the compiler generates
             //value comparison code. The behavior is like struct
             Assert.Equal(options_record_1, options_record_2);
             Assert.Equal(options_record_2, options_record_3);
             Assert.Equal(options_record_1, options_record_3);
             options_record_1.Retrials = 7;
-            //record semantic: after a conten change, comparison behaves as class, not struct (variables are references)
+            //record semantic: after a content change, comparisons behave as class, not struct (variables are references)
             Assert.NotEqual(options_record_1, options_record_2);
             Assert.NotEqual(options_record_2, options_record_3);
             Assert.Equal(options_record_1, options_record_3);
         }
-
-
     }
 }

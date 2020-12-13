@@ -3,9 +3,9 @@
     using System;
     using System.Linq;
     using Xunit;
-    using static TheCollection;
+    using static Collection;
 
-    internal class TheCollection
+    internal class Collection
     {
         static int milliseconds = DateTime.Now.Millisecond;
         public static Random Rand = new Random(milliseconds);

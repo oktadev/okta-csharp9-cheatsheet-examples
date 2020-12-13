@@ -38,6 +38,7 @@
         namespace Application
         {
             using Library;
+            //Compiler error: User Class doesn't implement ILibraryInterface
             //class UserClass : ILibraryInterface
             //{
             //    public int Increment(int i) => i + 1;
@@ -45,6 +46,7 @@
             class UserClass : ILibraryInterface
             {
                 public int Increment(int i) => i + 1;
+                //User is force to add Decrement implementation
                 public int Decrement(int i) => i - 1;
 
             }
@@ -74,6 +76,17 @@
             class UserClass : ILibraryInterface
             {
                 public int Increment(int i) => i + 1;
+            }
+        }
+
+        namespace Application_Version2
+        {
+            using Library;
+            //To use the new library features, UserClass needs to implement 2 interfaces
+            class UserClass : ILibraryInterface, ILibraryInterface2
+            {
+                public int Increment(int i) => i + 1;
+                public int Decrement(int i) => i - 1;
             }
         }
     }

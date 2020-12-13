@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Xunit;
 
 namespace Cs9CheatSheet.PatternMatching.SwitchExpression
@@ -62,7 +58,9 @@ namespace Cs9CheatSheet.PatternMatching.SwitchExpression
         [Fact]
         public void Test()
         {
-            Assert.All(Enumerable.Range(-1, 12), i => Assert.Equal(ScoreEvaluator.SwitchExpression(i), ScoreEvaluator.SwitchStatement(i)));
+            Assert.All(
+                Enumerable.Range(-1, 12), 
+                i => Assert.Equal(ScoreEvaluator.SwitchExpression(i), ScoreEvaluator.SwitchStatement(i)));
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Xunit;
 
 namespace Cs9CheatSheet.FitAndFinish.TargetTypeInference
 {
@@ -14,8 +9,8 @@ namespace Cs9CheatSheet.FitAndFinish.TargetTypeInference
         [Fact]
         public void Create_new_instance()
         {
-            var a = new MyType(12);
-            MyType b = new(12);
+            var a = new MyType(12); //old way
+            MyType b = new(12); //new way
             Assert.Equal(b, a);
         }
 
@@ -24,14 +19,17 @@ namespace Cs9CheatSheet.FitAndFinish.TargetTypeInference
         {
             int Double(MyType myVar) => myVar.Value * 2;
 
-            Assert.Equal(Double(new MyType(7)), Double(new(7)));
+            var a = Double(new MyType(7)); //old way
+            var b = Double(new (7)); //new way
+
+            Assert.Equal(b, a);
         }
 
         [Fact]
         public void Property_init()
         {
-            var a = new MyType() { Value = 61 };
-            MyType b = new() { Value = 61 };
+            var a = new MyType() { Value = 61 }; //old way
+            MyType b = new() { Value = 61 }; // new way
             Assert.Equal(b, a);
         }
     }

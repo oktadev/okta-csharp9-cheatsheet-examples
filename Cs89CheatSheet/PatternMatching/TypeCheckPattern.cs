@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cs9CheatSheet.PatternMatching.TypeCheckPattern
 {
@@ -49,9 +45,12 @@ namespace Cs9CheatSheet.PatternMatching.TypeCheckPattern
 
         static double IsStatement(object solid)
         {
-            if (solid is Cube cube && cube.Side >= 0.0) return Math.Pow(cube.Side, 3);
-            else if (solid is Sphere sphere && sphere.Radius >= 0.0) return 4.0 / 3.0 * Math.PI * Math.Pow(sphere.Radius, 3);
-            else if (solid is Cone cone && cone.Radius >= 0.0 && cone.Height >= 0) return Math.PI * Math.Pow(cone.Radius, 2) * cone.Height / 3.0;
+            if (solid is Cube cube && cube.Side >= 0.0) 
+                return Math.Pow(cube.Side, 3);
+            else if (solid is Sphere sphere && sphere.Radius >= 0.0) 
+                return 4.0 / 3.0 * Math.PI * Math.Pow(sphere.Radius, 3);
+            else if (solid is Cone cone && cone.Radius >= 0.0 && cone.Height >= 0) 
+                return Math.PI * Math.Pow(cone.Radius, 2) * cone.Height / 3.0;
             return double.NaN;
         }
 
@@ -59,9 +58,12 @@ namespace Cs9CheatSheet.PatternMatching.TypeCheckPattern
         {
             switch(solid)
             {
-                case Cube cube when cube.Side > 0.0: return Math.Pow(cube.Side, 3);
-                case Sphere sphere when sphere.Radius >= 0.0: return 4.0 / 3.0 * Math.PI * Math.Pow(sphere.Radius, 3);
-                case Cone cone when cone.Radius >= 0.0 && cone.Height >= 0.0 : return Math.PI * Math.Pow(cone.Radius, 2) * cone.Height / 3.0;
+                case Cube cube when cube.Side > 0.0: 
+                    return Math.Pow(cube.Side, 3);
+                case Sphere sphere when sphere.Radius >= 0.0: 
+                    return 4.0 / 3.0 * Math.PI * Math.Pow(sphere.Radius, 3);
+                case Cone cone when cone.Radius >= 0.0 && cone.Height >= 0.0 : 
+                    return Math.PI * Math.Pow(cone.Radius, 2) * cone.Height / 3.0;
                 default: return double.NaN;
             }
         }

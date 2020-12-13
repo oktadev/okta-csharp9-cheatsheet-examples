@@ -3,30 +3,6 @@ using Xunit;
 
 namespace Cs9CheatSheet.StaticLocalFunctions.LocalClosureCapture
 {
-    //class Sample
-    //{
-    //    internal static (int, int) Method()
-    //    {
-    //        int x = 1, y = 2, z = 0, w = 0;
-
-    //        CalculateWithClosure();
-    //        w = CalculateWithoutClosure(x, y);
-
-    //        return (z, w);
-
-    //        void CalculateWithClosure()
-    //        {
-    //            z = x + y;
-    //        }
-
-    //        //static: trying to use x, y, z or w will cause a compiler error
-    //        static int CalculateWithoutClosure(int a, int b)
-    //        {
-    //            return a + b;
-    //        }
-    //    }
-    //}
-
     public class Tests
     {
         [Fact]
@@ -40,7 +16,7 @@ namespace Cs9CheatSheet.StaticLocalFunctions.LocalClosureCapture
                 return a + b;
             }
 
-            //static: trying to use x, y, z or w will cause a compiler error
+            //static: trying to use x will cause a compiler error
             static int AddWithoutCapture(int a, int b)
             {
                 //x = 5; // Error
@@ -57,11 +33,6 @@ namespace Cs9CheatSheet.StaticLocalFunctions.LocalClosureCapture
             Assert.Equal(2, AddWithCapture(x, 1));
             //Here the side effect is to change the result of a test with the same inputs
             Assert.NotEqual(2, x + 1);
-
-            //Same with lambdas
-            Func<int, int, int> withCapture = (a, b) => { x = 9; return a + b; };
-            Func<int, int, int> withoutCapture = static (a, b) => { /*x = 9; //error */ return a + b; };
-
         }
 
         [Fact]
