@@ -38,14 +38,14 @@ namespace Cs9CheatSheet.AsyncStreams.WorldBank
         }
         public IEnumerable<Task<JsonElement>> DownloadCountries(string[] iso2Codes)
         {
-            for (int i = 0; i < StartFeed(iso2Codes); i++)
+            for (int i = 0, n = StartFeed(iso2Codes); i < n; i++)
             {
                 yield return DownloadCountryAsync(i, iso2Codes[i]);
             }
         }
         public async IAsyncEnumerable<JsonElement> DownloadCountriesStream(string[] iso2Codes)
         {
-            for (int i = 0; i < StartFeed(iso2Codes); i++)
+            for (int i = 0, n = StartFeed(iso2Codes); i < n; i++)
             {
                 yield return await DownloadCountryAsync(i, iso2Codes[i]);
             }
