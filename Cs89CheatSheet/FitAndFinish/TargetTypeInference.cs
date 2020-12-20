@@ -10,7 +10,7 @@ namespace Cs9CheatSheet.FitAndFinish.TargetTypeInference
         public void Create_new_instance()
         {
             var a = new MyType(12); //old way
-            MyType b = new(12); //new way
+            MyType b = new (12); //new way
             Assert.Equal(b, a);
         }
 
