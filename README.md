@@ -1,5 +1,4 @@
-# Cs89CheatSheet
-C# 8/9 Cheat Sheet
+# C# Cheat Sheet for C#9 (and some 8, too)
 
 - WorldBank
 + NonBreakingInterfaceAugmentation
